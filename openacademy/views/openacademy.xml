@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+        <!-- window action -->
+        <!--
+            The following tag is an action definition for a "window action",
+            that is an action opening a view or a set of views
+        -->
+
+        <record model="ir.ui.view" id="course_form_view">
+            <field name="name">course.form</field>
+            <field name="model">openacademy.course</field>
+            <field name="arch" type="xml">
+                <form string="Course Form">
+                    <sheet>
+                         <group>
+                            <field name="name"/>
+							<field name="teacher_id"/>
+                        </group>
+                        <notebook>
+                            <page string="Description">
+                                <field name="description"/>
+                            </page>
+                            <page string="About">
+                                This is an example of notebooks
+                            </page>
+                        </notebook>
+						
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+		 <!-- 
+		 <record model="ir.actions.act_window" id="course_form_view_act_window" action="course_form_view">
+            <field name="name">Edit Course</field>
+            <field name="res_model">openacademy.course</field>
+            <field name="view_mode">form</field>
+            
+        </record>
+         -->
+        <record model="ir.ui.view" id="course_search_view">
+            <field name="name">course.search</field>
+            <field name="model">openacademy.course</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="description"/>
+                </search>
+            </field>
+        </record>
+		<!-- 
+		<record model="ir.actions.act_window" id="course_search_view_act_window" action="course_search_view">
+            <field name="name">Search Course</field>
+            <field name="res_model">openacademy.course</field>
+            <field name="view_mode">form</field>
+            
+        </record>
+		-->
+		<record model="ir.ui.view" id="session_form_view">
+            <field name="name">session.form</field>
+            <field name="model">openacademy.session</field>
+            <field name="arch" type="xml">
+                <form string="Session Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="start_date"/>
+                            <field name="seats"/>
+                            <field name="duration"/>
+                            <field name="course_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="course_list_action">
+            <field name="name">Courses</field>
+            <field name="res_model">openacademy.course</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create the first course
+                </p>
+            </field>
+        </record>
+		<record model="ir.actions.act_window" id="teacher_list_action">
+            <field name="name">Teachers</field>
+            <field name="res_model">openacademy.teacher</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create the first teacher
+                </p>
+            </field>
+        </record>
+		<record model="ir.ui.view" id="teacher_form_view">
+            <field name="name">teacher.form</field>
+            <field name="model">openacademy.teacher</field>
+            <field name="arch" type="xml">
+                <form string="Teacher Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+		
+        <record model="ir.actions.act_window" id="session_list_action">
+            <field name="name">Sessions</field>
+            <field name="res_model">openacademy.session</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- top level menu: no parent -->
+        <menuitem id="main_coursemodule_menu" name="Open Academy"/>
+        <!-- A first level in the left side menu is needed
+             before using action= attribute -->
+        <menuitem id="coursemodule_menu" name="Courses" 
+                  parent="main_coursemodule_menu" action="course_list_action"/> 
+		<menuitem id="sessionmodule_menu" name="Sessions" 
+                  parent="main_coursemodule_menu" action="session_list_action"/>
+		<menuitem id="teachermodule_menu" name="Teachers" 
+                  parent="main_coursemodule_menu" action="teacher_list_action"/>
+				
+
+     
+
+       
+</odoo>
