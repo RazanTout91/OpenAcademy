@@ -74,11 +74,56 @@
                 </form>
             </field>
         </record>
+		<record model="ir.ui.view" id="session_search_view">
+            <field name="name">session.search</field>
+            <field name="model">openacademy.session</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="exam_form_view">
+            <field name="name">exam.form</field>
+            <field name="model">openacademy.exam</field>
+            <field name="arch" type="xml">
+                <form string="Exam Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="student_id"/>
+                            <field name="mathsubj"/>
+                            <field name="physsubj"/>
+                            <field name="chemsubj"/>
+  	                        <button type="object" name="calculate_average" string="Average"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+		<record model="ir.ui.view" id="exam_search_view">
+            <field name="name">exam.search</field>
+            <field name="model">openacademy.exam</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
 
+        <record model="ir.actions.act_window" id="exam_list_action">
+            <field name="name">Exams</field>
+            <field name="res_model">openacademy.exam</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Create the first exam
+                </p>
+            </field>
+        </record>
         <record model="ir.actions.act_window" id="course_list_action">
             <field name="name">Courses</field>
             <field name="res_model">openacademy.course</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">kanban,tree,form</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">Create the first course
                 </p>
@@ -87,7 +132,7 @@
 		<record model="ir.actions.act_window" id="teacher_list_action">
             <field name="name">Teachers</field>
             <field name="res_model">openacademy.teacher</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">kanban,tree,form</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">Create the first teacher
                 </p>
@@ -106,12 +151,48 @@
                 </form>
             </field>
         </record>
-
+        <record model="ir.ui.view" id="teacher_search_view">
+            <field name="name">teacher.search</field>
+            <field name="model">openacademy.teacher</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
 		
         <record model="ir.actions.act_window" id="session_list_action">
             <field name="name">Sessions</field>
             <field name="res_model">openacademy.session</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+		<record model="ir.ui.view" id="student_form_view">
+            <field name="name">student.form</field>
+            <field name="model">openacademy.student</field>
+            <field name="arch" type="xml">
+                <form string="Student Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="student_search_view">
+            <field name="name">student.search</field>
+            <field name="model">openacademy.student</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+		
+        <record model="ir.actions.act_window" id="student_list_action">
+            <field name="name">Students</field>
+            <field name="res_model">openacademy.student</field>
+            <field name="view_mode">kanban,tree,form</field>
         </record>
         <!-- top level menu: no parent -->
         <menuitem id="main_coursemodule_menu" name="Open Academy"/>
@@ -123,9 +204,9 @@
                   parent="main_coursemodule_menu" action="session_list_action"/>
 		<menuitem id="teachermodule_menu" name="Teachers" 
                   parent="main_coursemodule_menu" action="teacher_list_action"/>
+		<menuitem id="student_menu" name="Students" 
+                  parent="main_coursemodule_menu" action="student_list_action"/>
+		<menuitem id="exam_menu" name="Exams" 
+                  parent="main_coursemodule_menu" action="exam_list_action"/>
 				
-
-     
-
-       
 </odoo>
