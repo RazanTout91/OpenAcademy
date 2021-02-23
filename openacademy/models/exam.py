@@ -10,14 +10,13 @@ class Exam(models.Model):
     mathsubj = fields.Float(string="Math")
     physsubj = fields.Float(string="Physics")
     chemsubj = fields.Float(string="Chemistry")
+    avgsubj = fields.Float(string="Average")
     
     @api.onchange('mathsubj','physsubj','chemsubj')
     def calculate_average(self): 
-        if self.mathsubj == 0 or self.physsubj == 0 or self.chemsubj == 0 :
-           return {'warning':{'title':'Error!','message':'your message'}}
-        tot =  mathsubj + physsubj + chemsubj
-        avg = tot/3
-        return avg    
+        if self.mathsubj and self.physsubj and self.chemsubj:
+           self.avgsubj =  (self.mathsubj + self.physsubj + self.chemsubj)/3
+        
     
 
     

@@ -95,7 +95,8 @@
                             <field name="mathsubj"/>
                             <field name="physsubj"/>
                             <field name="chemsubj"/>
-  	                        <button type="object" name="calculate_average" string="Average"/>
+                            <field name="avgsubj" />
+  	                        
                         </group>
                     </sheet>
                 </form>
